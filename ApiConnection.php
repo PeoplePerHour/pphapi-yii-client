@@ -190,6 +190,12 @@ class ApiConnection extends CApplicationComponent {
             $this->curl->options->ssl_verifyhost = 0; // check the existence of a common name in the SSL peer certificate
         }
 
+        // TOMNOTE: I found that $curl->put() wasn't working. It needs curl_setopt($ch, CURLOPT_POST, true);
+        // TODO: If Charles merges pull-request https://github.com/phpnode/YiiCurl/pull/5 we can replace the 4 lines with: $response = $curl->put($url, $data);
+        if ($method == self::HTTP_METHOD_PUT) {
+            $this->curl->options->post = 1;
+        }
+
         switch ($method) {
             case self::HTTP_METHOD_GET:
                 $request = $this->curl->get($url, false);
