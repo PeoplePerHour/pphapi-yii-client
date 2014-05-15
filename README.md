@@ -1,4 +1,6 @@
 pphapi-yii-client
 =================
 
-Peopler per hour API client for Yii framework
+PeoplePerHour API client for Yii framework.
+
+Note: This extension depends on another Yii extension: [YiiCurl](https://github.com/phpnode/YiiCurl).
